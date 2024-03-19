@@ -4,6 +4,11 @@ const port = 8080;
 
 app.get('/', (req, res) => {
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+  res.send('Hello World Petushara_NEW!');
+=======
+>>>>>>> f723eb5 (new petushara)
   res.send('Hello Petushara!');
 =======
   res.send('Hello World Petushara_NEW_FEATURE!');
