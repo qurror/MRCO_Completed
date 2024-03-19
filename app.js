@@ -3,13 +3,10 @@ const app = express();
 const port = 8080;
 
 app.get('/', (req, res) => {
-<<<<<<< HEAD
   res.send('Hello World Petushara_NEW!');
-=======
-  res.send('Hello Petushara!');
->>>>>>> develop
 });
 
 app.listen(port, '0.0.0.0', () => {
   console.log(`App listening at http://0.0.0.0:${port}`);
 });
+
