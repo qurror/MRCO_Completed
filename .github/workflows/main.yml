@@ -1,28 +1,12 @@
-name: Node.js CI/CD
+version: '3'
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/usr/src/app
+    command: npm start
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v2
-
-    - name: Install Dependencies
-      run: npm install
-
-    - name: Build Docker Image
-      run: |
-        docker build -t my-node-app .
-        docker run -d -p 8080:8080 my-node-app
-
-    - name: Push to Docker Hub
-      run: |
-        echo "${{ secrets.DOCKER_PASSWORD_TOKEN }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-        docker tag my-node-app ${{ secrets.DOCKER_USERNAME }}/my-node-app
-        docker push ${{ secrets.DOCKER_USERNAME }}/my-node-app
